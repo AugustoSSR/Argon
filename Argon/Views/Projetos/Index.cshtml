@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Projetos";
+}
+
+<div class="text-center">
+
+    <h1>Lista de projetos</h1>
+    <p>Lista completa com todos os projetos desde arquivados ou aprovados.</p>
+    <br />
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-success" role="button" asp-controller="Projetos" asp-action="Adicionar">Adicionar</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Status</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Protocolo EI</th>
+                <th scope="col">ART</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Projeto 1</td>
+                <td>APROVADO</td>
+                <td>RJNET</td>
+                <td>Canoas</td>
+                <td>156465798654</td>
+                <td>ART 651894161651</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
+                            <ul class="dropdown-menu">
+                                <li><a role="button" class="dropdown-item" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
+                                <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
+                                <li><a role="button" class=" dropdown-item" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Projeto 1</td>
+                <td>APROVADO</td>
+                <td>RJNET</td>
+                <td>Canoas</td>
+                <td>156465798654</td>
+                <td>ART 651894161651</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
+                            <ul class="dropdown-menu">
+                                <li><a role="button" class="dropdown-item" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
+                                <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
+                                <li><a role="button" class=" dropdown-item" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Projeto 1</td>
+                <td>APROVADO</td>
+                <td>RJNET</td>
+                <td>Canoas</td>
+                <td>156465798654</td>
+                <td>ART 651894161651</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
+                            <ul class="dropdown-menu">
+                                <li><a role="button" class="dropdown-item" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
+                                <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
+                                <li><a role="button" class=" dropdown-item" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

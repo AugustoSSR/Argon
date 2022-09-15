@@ -35,8 +35,25 @@ namespace Argon.Controllers
 
         public IActionResult Apagar(int id)
         {
-            _projetosRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool apagado = _projetosRepositorio.Apagar(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = " Projeto apagado com sucesso";
+                } 
+                else
+                {
+                    TempData["MensagemErro"] = $" Seu projeto possui algum erro, tente novamente";
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $" Seu projeto possui algum erro, tente novamente {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult Copiar()
@@ -47,15 +64,42 @@ namespace Argon.Controllers
         [HttpPost]
         public IActionResult Adicionar(ProjetoModel projeto)
         {
-            _projetosRepositorio.Adicionar(projeto);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _projetosRepositorio.Adicionar(projeto);
+                    TempData["MensagemSucesso"] = " Projeto cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View(projeto);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $" Seu projeto possui algum erro, tente novamente {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult Editar(ProjetoModel projeto)
         {
-            _projetosRepositorio.Atualizar(projeto);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _projetosRepositorio.Atualizar(projeto);
+                    TempData["MensagemSucesso"] = " Projeto alterado com sucesso";
+                    return RedirectToAction("Index");
+
+                }
+                return View(projeto);
+            }
+            catch (Exception erro)
+            { 
+                TempData["MensagemErro"] = $" Seu projeto possui algum erro, tente novamente {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }

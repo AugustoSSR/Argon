@@ -5,8 +5,8 @@ namespace Argon.Repositorio
 {
     public interface IProjetosRepositorio
     {
-        ProjetoModel ListarPorID(int id);
         List<ProjetoModel> GetProjetos();
+        ProjetoModel ListarPorID(int id);
         ProjetoModel Adicionar(ProjetoModel projeto);
         ProjetoModel Atualizar(ProjetoModel projeto);
 

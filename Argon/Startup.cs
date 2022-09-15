@@ -1,16 +1,6 @@
 ﻿using Argon.Data;
 using Argon.Repositorio;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Connections.Features;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Argon
 {
@@ -32,6 +22,7 @@ namespace Argon
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<DBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
             services.AddScoped<IProjetosRepositorio, ProjetosRepositorio>();
+            services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
 
         }
 

@@ -1,14 +1,10 @@
-﻿@model List<ProjetoModel>
+﻿@model List<UsuariosModel>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "Projetos";
+    ViewData["Title"] = "Usuario";
 }
-
-
-
-
 <div class="text-center">
 
     <br />
@@ -30,47 +26,45 @@
     }
 
     <br />
-    <h1>Lista de projetos</h1>
-    <p>Lista completa com todos os projetos desde arquivados ou aprovados.</p>
+    <h1>Lista de usuarios</h1>
+    <p>Lista completa com todos os usuarios.</p>
     <br />
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-success" role="button" asp-controller="Projetos" asp-action="Adicionar">Adicionar</a>
+        <a class="btn btn-success" role="button" asp-controller="Usuarios" asp-action="Adicionar">Adicionar</a>
     </div>
     <br />
-    <table class="table" id="projetosTable">
+    <table class="table" id="usuariosTable">
         <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Status</th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Cidade</th>
-                <th scope="col">Protocolo EI</th>
-                <th scope="col">ART</th>
+                <th scope="col">Email</th>
+                <th scope="col">Data de Cadastro</th>
+                <th scope="col">Data de Alteração</th>
+                <th scope="col">Perfil</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             @if (Model != null && Model.Any())
             {
-                foreach (ProjetoModel projeto in Model)
+                foreach (UsuariosModel usuario in Model)
                 {
                     <tr>
-                        <th scope="row">@projeto.Id</th>
-                        <td>@projeto.Nome</td>
-                        <td>APROVADO</td>
-                        <td>@projeto.Empresa</td>
-                        <td>@projeto.Localidade</td>
-                        <td>156465798654</td>
-                        <td>ART 651894161651</td>
+                        <th scope="row">@usuario.Id</th>
+                        <td>@usuario.Nome</td>
+                        <td>@usuario.Email</td>
+                        <td>@usuario.dataCadastro</td>
+                        <td>@usuario.dataAlteracao</td>
+                        <td>@usuario.Perfil</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
                                     <ul class="dropdown-menu">
-                                        <li><a role="button" class="dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
+                                        <li><a role="button" class="dropdown-item" asp-route-id="@usuario.Id" asp-controller="Usuarios" asp-action="Editar">Editar</a></li>
                                         <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
-                                        <li><a role="button" class=" dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
+                                        <li><a role="button" class=" dropdown-item" asp-route-id="@usuario.Id" asp-controller="Usuarios" asp-action="ApagarConfirmacao">Apagar</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -80,7 +74,7 @@
             }
             else
             {
-                <tr><td valign="top" colspan="5">Nenhum contato encontrado</td></tr>
+                    <tr class="odd"><td valign="top" colspan="5">Nenhum contato encontrado</td></tr>
             }
         </tbody>
     </table>

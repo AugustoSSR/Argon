@@ -1,0 +1,45 @@
+﻿@using Argon.Enums
+@model UsuariosModel;
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="text-center">
+
+    <h1>Formulario de cadastro de projetos</h1>
+    <p>Informe todos os dados dos campos obrigatorios para adicionar um projeto.</p>
+    <br />
+</div>
+
+<form asp-controller="Usuarios" asp-action="Editar" method="post">
+
+    <div class="row">
+        <div class="col mb-3">
+            <input type="text" asp-for="Nome" class="form-control">
+            @Html.ValidationMessageFor(x => x.Nome)
+        </div>
+        <div class="col mb-3">
+            <input type="text" asp-for="Email" class="form-control" placeholder="Tipo do projeto" aria-label="Tipo do projeto">
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+        <div class="col mb-3">
+            <input type="text" asp-for="Telefone" class="form-control" placeholder="Nome do projeto" aria-label="Nome do projeto">
+            @Html.ValidationMessageFor(x => x.Telefone)
+        </div>
+        <div class="col mb-3">
+            <div class="col mb-3">
+                <select class="form-select" asp-for="Perfil">
+                    <option value="0">Selecione</option>
+                    <option value="@PerfilEnum.ADMINISTRADOR">Administrador</option>
+                    <option value="@PerfilEnum.PROJETISTA">Projetista</option>
+                    <option value="@PerfilEnum.CLIENTE">Cliente</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="d-grid gap-2">
+        <a class="btn btn-danger" asp-controller="Usuarios" asp-action="Index" role="button">Voltar</a>
+        <button type="submit" class="btn btn-block btn-success">Atualizar</button>
+    </div>
+</form>

@@ -1,4 +1,5 @@
-﻿@*
+﻿@model ProjetoModel;
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -12,28 +13,28 @@
     <br />
 </div>
 
-<form>
+<form asp-controller="Projetos" asp-action="Editar" method="post">
 
     <div class="row">
-
         <div class="col mb-3">
-            <select class="form-select" disabled>
-                <option selected>RJNET</option>
-            </select>
+            <input type="text" asp-for="Empresa" class="form-control">
         </div>
         <div class="col mb-3">
-            <input type="text" class="form-control" placeholder="Tipo do projeto" aria-label="Tipo do projeto">
+            <input type="text" asp-for="Tipo" class="form-control" placeholder="Tipo do projeto" aria-label="Tipo do projeto">
+            @Html.ValidationMessageFor(x => x.Tipo)
         </div>
         <div class="col mb-3">
-            <input type="text" class="form-control" placeholder="Nome do projeto" aria-label="Nome do projeto">
+            <input type="text" asp-for="Nome" class="form-control" placeholder="Nome do projeto" aria-label="Nome do projeto">
+            @Html.ValidationMessageFor(x => x.Nome)
         </div>
         <div class="col mb-3">
-            <input type="text" class="form-control" placeholder="Localidade" aria-label="Localidade">
+            <input type="text" asp-for="Localidade" class="form-control" placeholder="Localidade" aria-label="Localidade">
+            @Html.ValidationMessageFor(x => x.Localidade)
         </div>
     </div>
     <br />
     <div class="d-grid gap-2">
         <a class="btn btn-danger" asp-controller="Projetos" asp-action="Index" role="button">Voltar</a>
-        <button type="submit" class="btn btn-block btn-success">Cadastrar</button>
+        <button type="submit" class="btn btn-block btn-success">Atualizar</button>
     </div>
 </form>

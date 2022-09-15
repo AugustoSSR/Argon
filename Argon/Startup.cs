@@ -1,4 +1,5 @@
 ﻿using Argon.Data;
+using Argon.Repositorio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Connections.Features;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +30,9 @@ namespace Argon
             // dependencia sqlserver.
             // puxar dados do appsettings.json
             services.AddEntityFrameworkSqlServer()
-                .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+                .AddDbContext<DBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+            services.AddScoped<IProjetosRepositorio, ProjetosRepositorio>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

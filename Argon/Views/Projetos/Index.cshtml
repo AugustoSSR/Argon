@@ -1,4 +1,5 @@
-﻿@*
+﻿@model List<ProjetoModel>
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -28,69 +29,33 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Projeto 1</td>
-                <td>APROVADO</td>
-                <td>RJNET</td>
-                <td>Canoas</td>
-                <td>156465798654</td>
-                <td>ART 651894161651</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
-                            <ul class="dropdown-menu">
-                                <li><a role="button" class="dropdown-item" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
-                                <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
-                                <li><a role="button" class=" dropdown-item" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Projeto 1</td>
-                <td>APROVADO</td>
-                <td>RJNET</td>
-                <td>Canoas</td>
-                <td>156465798654</td>
-                <td>ART 651894161651</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
-                            <ul class="dropdown-menu">
-                                <li><a role="button" class="dropdown-item" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
-                                <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
-                                <li><a role="button" class=" dropdown-item" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Projeto 1</td>
-                <td>APROVADO</td>
-                <td>RJNET</td>
-                <td>Canoas</td>
-                <td>156465798654</td>
-                <td>ART 651894161651</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
-                            <ul class="dropdown-menu">
-                                <li><a role="button" class="dropdown-item" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
-                                <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
-                                <li><a role="button" class=" dropdown-item" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ProjetoModel projeto in Model)
+                {
+                    <tr>
+                        <th scope="row">@projeto.Id</th>
+                        <td>@projeto.Nome</td>
+                        <td>APROVADO</td>
+                        <td>@projeto.Empresa</td>
+                        <td>@projeto.Localidade</td>
+                        <td>156465798654</td>
+                        <td>ART 651894161651</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Ações</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a role="button" class="dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="Editar">Editar</a></li>
+                                        <li><a role="button" class=" dropdown-item" href="#">Copiar</a></li>
+                                        <li><a role="button" class=" dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="ApagarConfirmacao">Apagar</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>

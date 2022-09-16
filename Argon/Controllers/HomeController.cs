@@ -1,9 +1,11 @@
-﻿using Argon.Models;
+﻿using Argon.Filters;
+using Argon.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Argon.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class HomeController : Controller
     {
 

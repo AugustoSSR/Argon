@@ -1,9 +1,11 @@
-﻿using Argon.Models;
+﻿using Argon.Filters;
+using Argon.Models;
 using Argon.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Argon.Controllers
 {
+    [PaginaRestritaAdministracao]
     public class UsuariosController : Controller
     {
         private readonly IUsuariosRepositorio _usuariosRepositorio;

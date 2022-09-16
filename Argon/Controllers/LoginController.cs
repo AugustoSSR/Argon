@@ -11,7 +11,7 @@ namespace Argon.Controllers
         private readonly ISessao _sessao;
         public LoginController(IUsuariosRepositorio usuariosRepositorio, 
             ISessao sessao)
-        {
+        {   
             _usuariosRepositorio = usuariosRepositorio;
             _sessao = sessao;
         }
@@ -23,8 +23,14 @@ namespace Argon.Controllers
             return View();
         }
 
+        public IActionResult RedefinirSenha()
+        {
+            return View();
+        }
+
         public IActionResult Sair()
         {
+            TempData["MensagemSucesso"] = "Você deslogou ou foi descontado, digite novamente seu usuario e senha.";
             _sessao.removerSessaoUsuario();
             return RedirectToAction("Index", "Login");
         }

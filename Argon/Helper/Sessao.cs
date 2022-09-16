@@ -5,30 +5,32 @@ namespace Argon.Helper
 {
     public class Sessao : ISessao
     {
-        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IHttpContextAccessor _httpContext;
 
-        public Sessao(IHttpContextAccessor contextAccessor)
+        public Sessao(IHttpContextAccessor httpContext)
         {
-            _contextAccessor = contextAccessor;
+            _httpContext = httpContext;
         }
+
         public UsuariosModel BuscarSessaoUsuario()
         {
-            string usuarioSessao = _contextAccessor.HttpContext.Session.GetString("SessaoUsuarioLogado");
+            string sessaoUsuario = _httpContext.HttpContext.Session.GetString("sessaoUsuarioLogado");
 
-            if (string.IsNullOrEmpty(usuarioSessao)) return null;
+            if (string.IsNullOrEmpty(sessaoUsuario)) return null;
 
-            return JsonConvert.DeserializeObject<UsuariosModel>(usuarioSessao);
+            return JsonConvert.DeserializeObject<UsuariosModel>(sessaoUsuario);
         }
 
-        public void criarSessaoUsuario(UsuariosModel usuariosModel)
+        public void criarSessaoUsuario(UsuariosModel usuario)
         {
-            string valor = JsonConvert.SerializeObject(usuariosModel);
-            _contextAccessor.HttpContext.Session.SetString("SessaoUsuarioLogado", valor);
+            string valor = JsonConvert.SerializeObject(usuario);
+
+            _httpContext.HttpContext.Session.SetString("sessaoUsuarioLogado", valor);
         }
 
         public void removerSessaoUsuario()
         {
-            _contextAccessor.HttpContext.Session.Remove("SessaoUsuarioLogado");
+            _httpContext.HttpContext.Session.Remove("sessaoUsuarioLogado");
         }
     }
 }

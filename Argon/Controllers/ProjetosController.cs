@@ -1,9 +1,11 @@
-﻿using Argon.Models;
+﻿using Argon.Filters;
+using Argon.Models;
 using Argon.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Argon.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class ProjetosController : Controller
     {
         private readonly IProjetosRepositorio _projetosRepositorio;

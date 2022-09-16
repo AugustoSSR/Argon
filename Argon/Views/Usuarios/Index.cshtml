@@ -53,7 +53,7 @@
                         <th scope="row">@usuario.Id</th>
                         <td>@usuario.Nome</td>
                         <td>@usuario.Email</td>
-                        <td>@(usuario.Perfil == Argon.Enums.PerfilEnum.ADMINISTRADOR ? "ADMINISTRADOR" : "PROJETISTA")</td>
+                        <td>@usuario.Perfil</td>
                         <td>@usuario.dataCadastro</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -72,7 +72,7 @@
             }
             else
             {
-                    <tr class="odd"><td valign="top" colspan="5">Nenhum contato encontrado</td></tr>
+                <tr class="text-center"><td valign="top" colspan="5">Nenhum contato encontrado</td></tr>
             }
         </tbody>
     </table>

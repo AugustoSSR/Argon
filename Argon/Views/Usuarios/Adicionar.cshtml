@@ -1,7 +1,7 @@
 ﻿@using Argon.Enums
 @model UsuariosModel;
 @{
-    ViewData["Title"] = "Usuario";
+    ViewData["Title"] = "Adicionar usuario";
 }
 
 <div class="text-center">
@@ -22,19 +22,20 @@
             <input type="password" asp-for="Senha" class="form-control" placeholder="Password" aria-label="Password">
             @Html.ValidationMessageFor(x => x.Senha)
         </div>
-        <div class="col mb-3">
+        <div class="col mb-3 col-lg-2">
             <select class="form-select" asp-for="Perfil">
-                <option value="0">Selecione</option>
+                <option value="">Selecione</option>
                 <option value="@PerfilEnum.ADMINISTRADOR">Administrador</option>
                 <option value="@PerfilEnum.PROJETISTA">Projetista</option>
                 <option value="@PerfilEnum.CLIENTE">Cliente</option>
             </select>
+            @Html.ValidationMessageFor(x => x.Perfil)
         </div>
         <div class="col mb-3">
             <input type="text" asp-for="Nome" class="form-control" placeholder="Nome completo" aria-label="Nome completo">
             @Html.ValidationMessageFor(x => x.Nome)
         </div>
-        <div class="col mb-3">
+        <div class="col mb-3 col-lg-3">
             <input type="text" asp-for="Email" class="form-control" placeholder="Email" aria-label="Email">
             @Html.ValidationMessageFor(x => x.Email)
         </div>

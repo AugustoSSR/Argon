@@ -4,6 +4,7 @@ using Argon.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Argon.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20220915230226_ArgoSystem")]
+    partial class ArgoSystem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,12 +46,6 @@ namespace Argon.Migrations
                     b.Property<string>("Tipo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("dataAlteracao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("dataCadastro")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -94,6 +90,7 @@ namespace Argon.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("nomeAlteracao")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

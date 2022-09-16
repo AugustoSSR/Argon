@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Argon.Models
 {
-    public class UsuariosModel
+    public class UsuarioSemSenhaModel
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Digite o nome completo.")]
@@ -16,19 +16,8 @@ namespace Argon.Models
         [Required(ErrorMessage = "Digite o telefone de contato")]
         [Phone(ErrorMessage = "O celular informado está errado")]
         public string Telefone { get; set; }
-        [Required(ErrorMessage = "Digite sua senha por favor.")]
-        
-        public string Senha { get; set; }
         [Required(ErrorMessage = "Informe o cargo do usuario")]
         public PerfilEnum? Perfil { get; set; }
-        public DateTime dataCadastro { get; set; }
-        public DateTime? dataAlteracao { get; set; }
-        public string? nomeAlteracao { get; set; }
-
-        public bool SenhaValida(string senha)
-        {
-            return Senha == senha;
-        }
 
     }
 }

@@ -1,0 +1,45 @@
+﻿@model LoginModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Login";
+}
+
+<div class="text-center">
+
+    <br />
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <h4 class="alert-heading">Atenção!</h4>
+            <p class="mb-0"><strong>Oh snap!</strong> @TempData["MensagemErro"]. </p>
+        </div>
+    }
+
+    <main class="form-signin w-100 m-auto">
+        <form asp-controller="Login" asp-action="Entrar" method="post">
+            <img class="mb-4" src="~/img/brand/blue.png" alt="" width="180" height="57">
+            <h1 class="h3 mb-3 fw-normal">Faça o seu login</h1>
+
+            <div class="form-floating">
+                <input type="text" asp-for="Login" class="form-control" id="login" placeholder="Username">
+                <label for="login">Username</label>
+                @Html.ValidationMessageFor(x => x.Login)
+            </div>
+            <div class="form-floating">
+                <input type="password" asp-for="Senha" class="form-control" id="senha" placeholder="Password">
+                <label for="senha">Password</label>
+                @Html.ValidationMessageFor(x => x.Senha)
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Lembrar-se
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Logar</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+        </form>
+    </main>
+</div>
+

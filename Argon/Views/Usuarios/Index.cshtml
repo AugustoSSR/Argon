@@ -3,7 +3,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "Usuario";
+    ViewData["Title"] = "Lista de usuarios";
 }
 <div class="text-center">
 
@@ -39,9 +39,8 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
-                <th scope="col">Data de Cadastro</th>
-                <th scope="col">Data de Alteração</th>
                 <th scope="col">Perfil</th>
+                <th scope="col">Data de Cadastro</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -54,9 +53,8 @@
                         <th scope="row">@usuario.Id</th>
                         <td>@usuario.Nome</td>
                         <td>@usuario.Email</td>
+                        <td>@(usuario.Perfil == Argon.Enums.PerfilEnum.ADMINISTRADOR ? "ADMINISTRADOR" : "PROJETISTA")</td>
                         <td>@usuario.dataCadastro</td>
-                        <td>@usuario.dataAlteracao</td>
-                        <td>@usuario.Perfil</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <div class="btn-group" role="group">

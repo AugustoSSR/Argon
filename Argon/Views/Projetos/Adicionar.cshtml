@@ -1,6 +1,7 @@
-﻿@model ProjetoModel;
+﻿@using Argon.Enums
+@model ProjetoModel;
 @{
-    ViewData["Title"] = "Projetos";
+    ViewData["Title"] = "Adicionar projeto";
 }
 
 <div class="text-center">
@@ -15,11 +16,9 @@
     <div class="row">
         <div class="col mb-3">
             <select class="form-select" asp-for="Empresa">
-                <option selected></option>
-                <option value="RJNET">RJNET</option>
-                <option value="VIP TELECOM">VIP TELECOM</option>
-                <option value="ELETRICTEL">ELETRICTEL</option>
-                @Html.ValidationMessageFor(x => x.Empresa)
+                <option value="0">Selecione</option>
+                <option value="@EmpresaEnums.ELETRICTEL">ELETRICTEL</option>
+                <option value="@EmpresaEnums.VIPTELECOM">VIP TELECOM</option>
             </select>
         </div>
         <div class="col mb-3">

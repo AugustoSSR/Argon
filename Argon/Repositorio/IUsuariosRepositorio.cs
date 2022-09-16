@@ -5,6 +5,7 @@ namespace Argon.Repositorio
 {
     public interface IUsuariosRepositorio
     {
+        UsuariosModel BuscarPorLogin(string login);
         List<UsuariosModel> GetUsuario();
         UsuariosModel ListarPorID(int id);
         UsuariosModel Adicionar(UsuariosModel usuario);

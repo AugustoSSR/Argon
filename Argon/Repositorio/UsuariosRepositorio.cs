@@ -10,6 +10,10 @@ namespace Argon.Repositorio
         {
             _bancoContext = bancoContext;
         }
+        public UsuariosModel BuscarPorLogin(string login)
+        {
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+        }
         public UsuariosModel ListarPorID(int id)
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Id == id);

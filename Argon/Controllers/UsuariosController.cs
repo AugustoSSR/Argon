@@ -41,7 +41,7 @@ namespace Argon.Controllers
 
                 if (apagado)
                 {
-                    TempData["MensagemSucesso"] = " usuario apagado com sucesso";
+                    TempData["MensagemSucesso"] = " Usuario apagado com sucesso";
                 }
                 else
                 {
@@ -70,26 +70,36 @@ namespace Argon.Controllers
                 {
                     _usuariosRepositorio.Adicionar(usuario);
                     TempData["MensagemSucesso"] = " usuario cadastrado com sucesso";
-                    return RedirectToAction("Usuarios");
+                    return RedirectToAction("Index");
                 }
                 return View(usuario);
             }
             catch (System.Exception erro)
             {
                 TempData["MensagemErro"] = $" Seu usuario possui algum erro, tente novamente {erro.Message}";
-                return RedirectToAction("Usuarios");
+                return RedirectToAction("Index");
             }
         }
 
         [HttpPost]
-        public IActionResult Editar(UsuariosModel usuario)
+        public IActionResult Editar(UsuarioSemSenhaModel usuarioSemSenha)
         {
             try
             {
+                UsuariosModel usuario = null;
                 if (ModelState.IsValid)
                 {
-                    _usuariosRepositorio.Atualizar(usuario);
-                    TempData["MensagemSucesso"] = " usuario alterado com sucesso";
+                    usuario = new UsuariosModel()
+                    {
+                        Id = usuarioSemSenha.Id,
+                        Nome = usuarioSemSenha.Nome,
+                        Login = usuarioSemSenha.Login,
+                        Email = usuarioSemSenha.Email,
+                        Telefone = usuarioSemSenha.Telefone,
+                        Perfil = usuarioSemSenha.Perfil
+                    };
+                    usuario = _usuariosRepositorio.Atualizar(usuario);
+                    TempData["MensagemSucesso"] = " Usuario alterado com sucesso";
                     return RedirectToAction("Index");
 
                 }
@@ -97,7 +107,7 @@ namespace Argon.Controllers
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] = $" Seu usuario possui algum erro, tente novamente {erro.Message}";
+                TempData["MensagemErro"] = $" Seu usuario possui algum erro, tente novamente. Segue o erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }

@@ -17,5 +17,8 @@ namespace Argon.Models
         public string Nome { get; set; }
         [Required(ErrorMessage = "Digite a localidade do projeto.")]
         public string Localidade { get; set; }
+
+        public DateTime dataCadastro { get; set; }
+        public DateTime? dataAlteracao { get; set; }
     }
 }

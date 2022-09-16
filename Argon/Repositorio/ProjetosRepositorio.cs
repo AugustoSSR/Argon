@@ -22,6 +22,7 @@ namespace Argon.Repositorio
         public ProjetoModel Adicionar(ProjetoModel projeto)
         {
             // Inserção do banco de dados.
+            projeto.dataCadastro = DateTime.Now;
             _bancoContext.Projetos.Add(projeto);
             _bancoContext.SaveChanges();
             return projeto;
@@ -35,6 +36,7 @@ namespace Argon.Repositorio
             projetoDB.Nome = projeto.Nome;
             projetoDB.Localidade = projeto.Localidade;
             projetoDB.Tipo = projeto.Tipo;
+            projetoDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Projetos.Update(projetoDB);
             _bancoContext.SaveChanges();

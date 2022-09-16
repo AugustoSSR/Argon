@@ -1,4 +1,5 @@
 ﻿using Argon.Data;
+using Argon.Helper;
 using Argon.Repositorio;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,8 +22,18 @@ namespace Argon
             // puxar dados do appsettings.json
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<DBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped<IProjetosRepositorio, ProjetosRepositorio>();
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
+            services.AddScoped<ISessao, Sessao>();
+
+            services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
 
         }
 
@@ -39,6 +50,8 @@ namespace Argon
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

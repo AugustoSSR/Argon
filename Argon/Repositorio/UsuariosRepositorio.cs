@@ -27,6 +27,7 @@ namespace Argon.Repositorio
         {
             // Inserção do banco de dados.
             usuario.dataCadastro = DateTime.Now;
+            usuario.SetSenhaHash();
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges();
             return usuario;

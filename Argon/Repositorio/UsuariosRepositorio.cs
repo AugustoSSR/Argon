@@ -14,6 +14,10 @@ namespace Argon.Repositorio
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
         }
+        public UsuariosModel BuscarPorEmail(string email, string login)
+        {
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
+        }
         public UsuariosModel ListarPorID(int id)
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Id == id);
@@ -43,6 +47,22 @@ namespace Argon.Repositorio
             usuarioDB.Email = usuario.Email;
             usuarioDB.Telefone = usuario.Telefone;
             usuarioDB.Perfil = usuario.Perfil;
+            usuarioDB.dataAlteracao = DateTime.Now;
+
+            _bancoContext.Usuarios.Update(usuarioDB);
+            _bancoContext.SaveChanges();
+
+            return usuarioDB;
+        }
+
+        public UsuariosModel AlterarSenha(AlterarSenhaModel alterarSenhaModel)
+        {
+            UsuariosModel usuarioDB = ListarPorID(alterarSenhaModel.Id);
+            if (usuarioDB == null) throw new Exception("Houve um erro na atualização da senha, usuário não encontrado.");
+            if (!usuarioDB.SenhaValida(alterarSenhaModel.SenhaAtual)) throw new Exception("Senha atual não confere.");
+            if (usuarioDB.SenhaValida(alterarSenhaModel.NovaSenha)) throw new Exception("Nova senha deve ser diferenda da senha atual");
+
+            usuarioDB.SetNovaSenha(alterarSenhaModel.NovaSenha);
             usuarioDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Usuarios.Update(usuarioDB);

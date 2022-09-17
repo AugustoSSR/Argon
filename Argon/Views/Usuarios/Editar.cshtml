@@ -15,37 +15,42 @@
 
     <div class="row">
         <div class="col mb-3 col-lg-2">
-            <labal>Identificação</labal>
+            <labal class="form-label">Identificação</labal>
             <input type="text" asp-for="Id" class="form-control" disabled />
         </div>
         <div class="col mb-3 col-lg-3">
-            <labal>Data de criação</labal>
+            <labal class="form-label">Data de criação</labal>
             <input type="text" asp-for="dataCadastro" class="form-control" disabled />
         </div>
         <div class="col mb-3 col-lg-3">
-            <labal>Ultima alteração</labal>
+            <labal class="form-label">Ultima alteração</labal>
             <input type="text" asp-for="dataAlteracao" class="form-control" disabled />
         </div>
     </div>
 
     <div class="row">
         <div class="col mb-3">
+            <labal class="form-label">Nome completo</labal>
             <input type="text" asp-for="Nome" class="form-control">
             @Html.ValidationMessageFor(x => x.Nome)
         </div>
         <div class="col mb-3">
+            <labal class="form-label">E-mail</labal>
             <input type="text" asp-for="Email" class="form-control">
             @Html.ValidationMessageFor(x => x.Email)
         </div>
         <div class="col mb-3">
+            <labal class="form-label">Nome do usuario</labal>
             <input type="text" asp-for="Login" class="form-control">
             @Html.ValidationMessageFor(x => x.Login)
         </div>
         <div class="col mb-3">
+            <labal class="form-label">Telefone</labal>
             <input type="text" asp-for="Telefone" class="form-control">
             @Html.ValidationMessageFor(x => x.Telefone)
         </div>
         <div class="col mb-3">
+            <labal class="form-label">Cargo</labal>
             <div class="col mb-3">
                 <select class="form-select" asp-for="Perfil">
                     <option value="">Selecione</option>

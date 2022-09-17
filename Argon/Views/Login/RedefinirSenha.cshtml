@@ -1,4 +1,4 @@
-﻿@model LoginModel
+﻿@model RedefinirSenhaModel
 @{
     Layout = "_LayoutDeslogado";
     ViewData["Title"] = "Redefinir Senha";
@@ -25,7 +25,7 @@
     }
 
     <main class="form-signin w-100 m-auto">
-        <form asp-controller="Login" asp-action="Entrar" method="post">
+        <form asp-controller="Login" asp-action="EnviarLink" method="post">
             <img class="mb-4" src="~/img/brand/blue.png" alt="" width="180" height="57">
             <h1 class="h3 mb-3 fw-normal">Redefinir senha.</h1>
 
@@ -35,9 +35,9 @@
                 @Html.ValidationMessageFor(x => x.Login)
             </div>
             <div class="form-floating">
-                <input type="password" asp-for="Senha" class="form-control" id="senha" placeholder="Password">
-                <label for="senha">Password</label>
-                @Html.ValidationMessageFor(x => x.Senha)
+                <input type="text" asp-for="Email" class="form-control" id="email" placeholder="E-mail">
+                <label for="email">E-mail</label>
+                @Html.ValidationMessageFor(x => x.Email)
             </div>
             <br />
             <button class="w-100 btn btn-lg btn-primary" type="submit">Redefinir</button>

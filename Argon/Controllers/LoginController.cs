@@ -9,11 +9,13 @@ namespace Argon.Controllers
     {
         private readonly IUsuariosRepositorio _usuariosRepositorio;
         private readonly ISessao _sessao;
+        private readonly IEmail _email;
         public LoginController(IUsuariosRepositorio usuariosRepositorio, 
-            ISessao sessao)
+            ISessao sessao, IEmail email)
         {   
             _usuariosRepositorio = usuariosRepositorio;
             _sessao = sessao;
+            _email = email;
         }
 
         public IActionResult Index()
@@ -61,6 +63,44 @@ namespace Argon.Controllers
             catch (Exception erro)
             {
                 TempData["MensagemErro"] = $"Ops, não conseguimos realizar o seu login. Erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult EnviarLink(RedefinirSenhaModel redefinirSenhaModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UsuariosModel usuario = _usuariosRepositorio.BuscarPorEmail(redefinirSenhaModel.Email, redefinirSenhaModel.Login);
+                    if (usuario != null) 
+                    {
+                        string novaSenha = usuario.GerarNovaSenha();
+                        string mensagem = $"Sua nova senha é: {novaSenha}";
+
+                        bool emailEnviado = _email.Enviar(usuario.Email, "Argon - Redefinição de Senha", mensagem);
+
+                        if (emailEnviado)
+                        {
+                            _usuariosRepositorio.Atualizar(usuario);
+                            TempData["MensagemSucesso"] = "Foi enviado um link para o seu e-mail cadastrado.";
+                        }
+                        else
+                        {
+                            TempData["MensagemErro"] = "Não conseguimos enviar o e-mail, por favor tente novamente.";
+                        }
+
+                        return RedirectToAction("Index", "Login");
+                    }
+                    TempData["MensagemErro"] = "Não conseguimos redefinir sua senha, pois não encontramos os dados informados.";
+                }
+                return View("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos redefinir sua senha. Erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }

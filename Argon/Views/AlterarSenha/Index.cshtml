@@ -1,0 +1,54 @@
+﻿@using Argon.Enums
+@model AlterarSenhaModel;
+@{
+    ViewData["Title"] = "Alterar senha do Usuario";
+}
+
+<div class="text-center">
+
+    <h1>Alterar senha do usuario</h1>
+    <p>Informe todos os dados para alterar sua senha.</p>
+    <br />
+</div>
+
+<br />
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Parabéns! </strong> @TempData["MensagemSucesso"].
+    </div>
+}
+<br />
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <h4 class="alert-heading">Atenção!</h4>
+        <p class="mb-0"><strong>Oh snap!</strong> @TempData["MensagemErro"]. </p>
+    </div>
+}
+
+<form asp-controller="AlterarSenha" asp-action="Alterar" method="post">
+
+    <div class="col mb-3">
+        <labal class="form-label">Senha atual</labal>
+        <input type="password" asp-for="SenhaAtual" class="form-control">
+        @Html.ValidationMessageFor(x => x.SenhaAtual)
+    </div>
+    <div class="col mb-3">
+        <labal class="form-label">Nova senha</labal>
+        <input type="password" asp-for="NovaSenha" class="form-control">
+        @Html.ValidationMessageFor(x => x.NovaSenha)
+    </div>
+    <div class="col mb-3">
+        <labal class="form-label">Confirmar senha</labal>
+        <input type="password" asp-for="confirmarNovaSenha" class="form-control">
+        @Html.ValidationMessageFor(x => x.confirmarNovaSenha)
+    </div>
+    <br />
+    <div class="d-grid gap-2">
+        <a class="btn btn-danger" asp-controller="Home" asp-action="Index" role="button">Voltar</a>
+        <button type="submit" class="btn btn-block btn-success">Atualizar</button>
+    </div>
+</form>

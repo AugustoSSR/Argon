@@ -28,6 +28,7 @@ namespace Argon
             services.AddScoped<IProjetosRepositorio, ProjetosRepositorio>();
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
             services.AddScoped<ISessao, Sessao>();
+            services.AddScoped<IEmail, Email>();
 
             services.AddSession(o =>
             {

@@ -1,0 +1,11 @@
+﻿namespace Argon.Enums
+{
+    public enum TiposEnum
+    {
+        Compartilhamento = 0,
+        FTTH = 1,
+        AnteProjeto = 2,
+        Pingamento = 3,
+        Travessia = 4
+    }
+}

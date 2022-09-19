@@ -24,7 +24,7 @@ namespace Argon.Models
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "Digite sua senha por favor.")]
-        [StringLength(16, MinimumLength = 8, ErrorMessage = "A senha do usuario deve conter entre 8 e 16 caracteres.")]
+        //[StringLength(16, MinimumLength = 8, ErrorMessage = "A senha do usuario deve conter entre 8 e 16 caracteres.")]
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "Informe o cargo do usuario")]

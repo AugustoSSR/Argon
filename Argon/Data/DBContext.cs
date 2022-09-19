@@ -10,5 +10,6 @@ namespace Argon.Data
         }
         public DbSet<ProjetoModel> Projetos { get; set; }
         public DbSet<UsuariosModel> Usuarios { get; set; }
+        public DbSet<EmpresasModel> Empresas { get; set; }
     }
 }

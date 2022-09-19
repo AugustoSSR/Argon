@@ -5,6 +5,7 @@
 $(document).ready(function () {
     getDatatable('#projetosTable');
     getDatatable('#usuariosTable');
+    getDatatable('#empresasTable');
 });
 
 function getDatatable(id) {

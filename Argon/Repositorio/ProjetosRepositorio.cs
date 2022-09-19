@@ -34,7 +34,14 @@ namespace Argon.Repositorio
 
             if (projetoDB == null) throw new System.Exception("Houve um erro na atualização do projeto.");
             projetoDB.Nome = projeto.Nome;
+            projetoDB.Concessionaria = projeto.Concessionaria;
+            projetoDB.Observacao = projeto.Observacao;
+            projetoDB.ART = projeto.ART;
+            projetoDB.Engenheiros = projeto.Engenheiros;
+            projetoDB.Empresa = projeto.Empresa;
+            projetoDB.Protocolo = projeto.Protocolo;
             projetoDB.Localidade = projeto.Localidade;
+            projetoDB.Situacao = projeto.Situacao;
             projetoDB.Tipo = projeto.Tipo;
             projetoDB.dataAlteracao = DateTime.Now;
 

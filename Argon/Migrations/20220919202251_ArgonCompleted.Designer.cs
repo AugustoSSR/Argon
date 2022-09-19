@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Argon.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20220919002118_Cep")]
-    partial class Cep
+    [Migration("20220919202251_ArgonCompleted")]
+    partial class ArgonCompleted
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,47 @@ namespace Argon.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Argon.Models.ArquivoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Empresa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Localidade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("dataAlteracao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("dataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("nomeAlteracao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nomeCadastro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("numeroCaderno")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Arquivos");
+                });
 
             modelBuilder.Entity("Argon.Models.EmpresasModel", b =>
                 {
@@ -36,8 +77,9 @@ namespace Argon.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CNPJ")
-                        .HasColumnType("int");
+                    b.Property<string>("CNPJ")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cep")
                         .IsRequired()
@@ -79,21 +121,24 @@ namespace Argon.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UsuarioID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("dataAlteracao")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("dataCadastro")
+                    b.Property<DateTime>("dataCadastro")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("nomeAlteracao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nomeCadastro")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Empresas");
                 });
 
-            modelBuilder.Entity("Argon.Models.ProjetoModel", b =>
+            modelBuilder.Entity("Argon.Models.EngenheirosModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -101,8 +146,46 @@ namespace Argon.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("ART")
-                        .HasColumnType("int");
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CREA")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("dataAlteracao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("dataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("dataVencimento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nomeAlteracao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nomeCadastro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Engenheiros");
+                });
+
+            modelBuilder.Entity("Argon.Models.ProjetoModel", b =>
+                {
+                    b.Property<string>("ART")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Concessionaria")
                         .HasColumnType("int");
@@ -115,6 +198,9 @@ namespace Argon.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("Localidade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -126,16 +212,13 @@ namespace Argon.Migrations
                     b.Property<string>("Observacao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Protocolo")
-                        .HasColumnType("int");
+                    b.Property<string>("Protocolo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Situacao")
                         .HasColumnType("int");
 
                     b.Property<int>("Tipo")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UsuarioID")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("dataAlteracao")
@@ -144,7 +227,11 @@ namespace Argon.Migrations
                     b.Property<DateTime>("dataCadastro")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.Property<string>("nomeAlteracao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nomeCadastro")
+                        .HasColumnType("nvarchar(max)");
 
                     b.ToTable("Projetos");
                 });
@@ -188,6 +275,9 @@ namespace Argon.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("nomeAlteracao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nomeCadastro")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

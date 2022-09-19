@@ -40,7 +40,7 @@ namespace Argon.Helper
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Gravar log de erro.
                 return false;

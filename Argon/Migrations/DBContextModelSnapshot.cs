@@ -60,7 +60,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Arquivos", (string)null);
+                    b.ToTable("Arquivos");
                 });
 
             modelBuilder.Entity("Argon.Models.EmpresasModel", b =>
@@ -133,7 +133,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Empresas", (string)null);
+                    b.ToTable("Empresas");
                 });
 
             modelBuilder.Entity("Argon.Models.EngenheirosModel", b =>
@@ -177,17 +177,11 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Engenheiros", (string)null);
+                    b.ToTable("Engenheiros");
                 });
 
             modelBuilder.Entity("Argon.Models.ProjetoModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("ART")
                         .HasColumnType("nvarchar(max)");
 
@@ -201,6 +195,9 @@ namespace Argon.Migrations
                     b.Property<string>("Engenheiros")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Localidade")
                         .IsRequired()
@@ -234,9 +231,7 @@ namespace Argon.Migrations
                     b.Property<string>("nomeCadastro")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Projetos", (string)null);
+                    b.ToTable("Projetos");
                 });
 
             modelBuilder.Entity("Argon.Models.UsuariosModel", b =>
@@ -285,7 +280,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

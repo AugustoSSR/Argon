@@ -57,9 +57,9 @@
         </div>
         <div class="col-md-4">
             <labal class="form-label">Empresa</labal>
-            @Html.DropDownListFor(m => m.Empresa, Model.EmpresaList, "Select Role", new { @class = "form-control" })
+            <select class="form-select" id="selectitemss" asp-for="Empresa" asp-items="@(new SelectList(@ViewBag.empresa, "Id", "Nome"))"></select>
+
             @Html.ValidationMessageFor(x => x.Empresa)
-            <!-- <input type="text" asp-for="Empresa" class="form-control"> -->
         </div>
         <div class="col-md-4">
             <labal class="form-label">Protocolo</labal>
@@ -83,9 +83,8 @@
         </div>
         <div class="col-md-4">
             <labal class="form-label">Engenheiro</labal>
-            @Html.DropDownListFor(m => m.Engenheiros, Model.EngenheirosList, "Select Role", new { @class = "form-control" })
+            <select class="form-select" id="selectitems" asp-for="Engenheiros" asp-items="@(new SelectList(@ViewBag.engenheiro, "Id", "Nome"))"></select>
             @Html.ValidationMessageFor(x => x.Engenheiros)
-            <!-- <input type="text" asp-for="Empresa" class="form-control"> -->
         </div>
         <div class="col-md-12">
             <labal class="form-label">Campo de anotação</labal>

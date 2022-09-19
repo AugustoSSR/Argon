@@ -26,30 +26,17 @@ namespace Argon.Controllers
 
         public IActionResult Adicionar()
         {
+            List<EmpresasModel> empresasList = new List<EmpresasModel>();
+            empresasList = (from x in _dbContext.Empresas select x).ToList();
+            empresasList.Insert(0, new EmpresasModel { Id = 0, Nome = "Selecione a empresa" });
+            ViewBag.empresa = empresasList;
 
-            var empresasList = _dbContext.Empresas.Select(r => r.Nome);
-            var viewModelEmpresas = new ProjetoModel
-            {
-                EmpresaList = new SelectList(empresasList)
-            };
+            List<EngenheirosModel> engenheiroList = new List<EngenheirosModel>();
+            engenheiroList = (from x in _dbContext.Engenheiros select x).ToList();
+            engenheiroList.Insert(0, new EngenheirosModel { Id = 0, Nome = "Selecione o engenheiro" });
+            ViewBag.engenheiro = engenheiroList;
 
-            var engenheiroList = _dbContext.Engenheiros.Select(r => r.Nome);
-            var viewModelEngenheiros = new ProjetoModel
-            {
-                EngenheirosList = new SelectList(engenheiroList)
-            };
 
-            /// Dados que pretendo puxar.
-            //List<EmpresasModel> empresasList = new List<EmpresasModel>();
-            //List<EngenheirosModel> engenheiroList = new List<EngenheirosModel>();
-            // Selecionar a tabela
-            //empresasList = (from x in _dbContext.Empresas select x).ToList();
-            //empresasList.Insert(0, new EmpresasModel { Id = 0, Nome = "Selecione a empresa" });
-            //ViewBag.empresa = empresasList;
-
-            //engenheiroList = (from x in _dbContext.Engenheiros select x).ToList();
-            //engenheiroList.Insert(0, new EngenheirosModel { Id = 0, Nome = "Selecione o engenheiro" });
-            //ViewBag.engenheiro = engenheiroList;
             return View();
         }
         public IActionResult Editar(int id)
@@ -94,6 +81,8 @@ namespace Argon.Controllers
         [HttpPost]
         public IActionResult Adicionar(ProjetoModel projeto)
         {
+            
+
             try
             {
                 if (ModelState.IsValid)

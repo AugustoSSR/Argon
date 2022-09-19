@@ -8,7 +8,6 @@ namespace Argon.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "Coloque o nome completo.")]
         public string Nome { get; set; }
-        //public IEnumerable<SelectListItem> NomeList { get; set; }
         [Required(ErrorMessage = "Coloque o CPF.")]
         public string CPF { get; set; }
         [Required(ErrorMessage = "Coloque o numero do CREA.")]

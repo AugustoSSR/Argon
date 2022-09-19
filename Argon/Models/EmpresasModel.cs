@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using Correios.Net;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Argon.Models
@@ -8,9 +7,7 @@ namespace Argon.Models
     public class EmpresasModel
     {
         public int Id { get; set; }
-        [Required]
         public string Nome { get; set; }
-        //public IEnumerable<SelectListItem> NomeList { get; set; }
         public string CNPJ { get; set; }
         public string NomeFantasia { get; set; }
         public string Razao { get; set; }

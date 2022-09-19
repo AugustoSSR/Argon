@@ -1,24 +1,22 @@
-﻿using Argon.Data;
-using Argon.Filters;
+﻿using Argon.Filters;
 using Argon.Models;
 using Argon.Repositorio;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Argon.Controllers
 {
     [PaginaParaUsuarioLogado]
-    public class EmpresasController : Controller
+    public class ArquivosController : Controller
     {
-        private readonly IEmpresasRepositorio _empresasRepositorio;
-        public EmpresasController(IEmpresasRepositorio empresasRepositorio)
+        private readonly IArquivoRepositorio _arquivoRepositorio;
+        public ArquivosController(IArquivoRepositorio arquivoRepositorio)
         {
-            _empresasRepositorio = empresasRepositorio;
-
+            _arquivoRepositorio = arquivoRepositorio;
         }
         public IActionResult Index()
         {
-            List<EmpresasModel> projetos = _empresasRepositorio.GetEmpresas();
+            List<ArquivoModel> projetos = _arquivoRepositorio.GetArquivo();
+
             return View(projetos);
         }
 
@@ -28,12 +26,12 @@ namespace Argon.Controllers
         }
         public IActionResult Editar(int id)
         {
-            EmpresasModel projeto = _empresasRepositorio.ListarPorID(id);
+            ArquivoModel projeto = _arquivoRepositorio.ListarPorID(id);
             return View(projeto);
         }
         public IActionResult ApagarConfirmacao(int id)
         {
-            EmpresasModel projeto = _empresasRepositorio.ListarPorID(id);
+            ArquivoModel projeto = _arquivoRepositorio.ListarPorID(id);
             return View(projeto);
         }
 
@@ -41,7 +39,7 @@ namespace Argon.Controllers
         {
             try
             {
-                bool apagado = _empresasRepositorio.Apagar(id);
+                bool apagado = _arquivoRepositorio.Apagar(id);
 
                 if (apagado)
                 {
@@ -66,13 +64,13 @@ namespace Argon.Controllers
         }
 
         [HttpPost]
-        public IActionResult Adicionar(EmpresasModel projeto)
+        public IActionResult Adicionar(ArquivoModel projeto)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _empresasRepositorio.Adicionar(projeto);
+                    _arquivoRepositorio.Adicionar(projeto);
                     TempData["MensagemSucesso"] = " Projeto cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }
@@ -86,13 +84,13 @@ namespace Argon.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(EmpresasModel projeto)
+        public IActionResult Editar(ArquivoModel projeto)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _empresasRepositorio.Atualizar(projeto);
+                    _arquivoRepositorio.Atualizar(projeto);
                     TempData["MensagemSucesso"] = " Projeto alterado com sucesso";
                     return RedirectToAction("Index");
 

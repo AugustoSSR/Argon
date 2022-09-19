@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-6">
             <labal class="form-label">CNPJ</labal>
-            <input type="text" asp-for="CNPJ" class="form-control">
+            <input type="text" name="cnpj" data-mask="00.000.000/0000-00" asp-for="CNPJ" class="form-control" maxlength="18">
             @Html.ValidationMessageFor(x => x.CNPJ)
         </div>
         <div class="col-md-6">
@@ -35,12 +35,12 @@
         </div>
         <div class="col-md-6">
             <labal class="form-label">Telefone</labal>
-            <input type="text" asp-for="Telefone" class="form-control">
+            <input type="text" data-mask="(00) 0000-0000" asp-for="Telefone" class="form-control" maxlength="15">
             @Html.ValidationMessageFor(x => x.Telefone)
         </div>
         <div class="col-md-6">
             <labal class="form-label">CEP</labal>
-            <input type="text" asp-for="Cep" class="form-control" id="">
+            <input type="text" name="cep" data-mask="00.000-000" asp-for="Cep" class="form-control" maxlength="10">
             @Html.ValidationMessageFor(x => x.Cep)
         </div>
         <div class="col-md-6">
@@ -52,6 +52,16 @@
             <labal class="form-label">Bairro</labal>
             <input type="text" asp-for="Bairro" class="form-control">
             @Html.ValidationMessageFor(x => x.Bairro)
+        </div>
+        <div class="col-md-6">
+            <labal class="form-label">Estado</labal>
+            <input type="text" asp-for="Estado" class="form-control">
+            @Html.ValidationMessageFor(x => x.Estado)
+        </div>
+        <div class="col-md-6">
+            <labal class="form-label">Cidade</labal>
+            <input type="text" asp-for="Cidade" class="form-control">
+            @Html.ValidationMessageFor(x => x.Cidade)
         </div>
         <div class="col-md-6">
             <labal class="form-label">Numero</labal>

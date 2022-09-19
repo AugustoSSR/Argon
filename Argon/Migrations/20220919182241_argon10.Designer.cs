@@ -4,6 +4,7 @@ using Argon.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Argon.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20220919182241_argon10")]
+    partial class argon10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +62,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Arquivos", (string)null);
+                    b.ToTable("Arquivos");
                 });
 
             modelBuilder.Entity("Argon.Models.EmpresasModel", b =>
@@ -133,7 +135,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Empresas", (string)null);
+                    b.ToTable("Empresas");
                 });
 
             modelBuilder.Entity("Argon.Models.EngenheirosModel", b =>
@@ -177,7 +179,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Engenheiros", (string)null);
+                    b.ToTable("Engenheiros");
                 });
 
             modelBuilder.Entity("Argon.Models.ProjetoModel", b =>
@@ -236,7 +238,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projetos", (string)null);
+                    b.ToTable("Projetos");
                 });
 
             modelBuilder.Entity("Argon.Models.UsuariosModel", b =>
@@ -285,7 +287,7 @@ namespace Argon.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

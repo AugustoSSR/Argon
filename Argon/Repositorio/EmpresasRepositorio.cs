@@ -21,8 +21,10 @@ namespace Argon.Repositorio
         }
         public EmpresasModel Adicionar(EmpresasModel empresas)
         {
+            UsuariosModel usuario = new UsuariosModel();
             // Inserção do banco de dados.
             empresas.dataCadastro = DateTime.Now;
+            empresas.nomeCadastro = usuario.Nome;
             _bancoContext.Empresas.Add(empresas);
             _bancoContext.SaveChanges();
             return empresas;
@@ -31,7 +33,7 @@ namespace Argon.Repositorio
         public EmpresasModel Atualizar(EmpresasModel empresas)
         {
             EmpresasModel empresasDB = ListarPorID(empresas.Id);
-
+            UsuariosModel usuario = new UsuariosModel();
             if (empresasDB == null) throw new System.Exception("Houve um erro na atualização do empresas.");
             empresasDB.Nome = empresas.Nome;
             empresasDB.Cidade = empresas.Cidade;
@@ -44,6 +46,7 @@ namespace Argon.Repositorio
             empresasDB.Bairro = empresas.Bairro;
             empresasDB.Cep = empresas.Cep;
             empresasDB.Email = empresas.Email;
+            empresasDB.nomeAlteracao = usuario.Nome;
             empresasDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Empresas.Update(empresasDB);

@@ -21,8 +21,10 @@ namespace Argon.Repositorio
         }
         public ProjetoModel Adicionar(ProjetoModel projeto)
         {
+            UsuariosModel usuario = new UsuariosModel();
             // Inserção do banco de dados.
             projeto.dataCadastro = DateTime.Now;
+            projeto.nomeCadastro = usuario.Nome;
             _bancoContext.Projetos.Add(projeto);
             _bancoContext.SaveChanges();
             return projeto;
@@ -31,6 +33,7 @@ namespace Argon.Repositorio
         public ProjetoModel Atualizar(ProjetoModel projeto)
         {
             ProjetoModel projetoDB = ListarPorID(projeto.Id);
+            UsuariosModel usuario = new UsuariosModel();
 
             if (projetoDB == null) throw new System.Exception("Houve um erro na atualização do projeto.");
             projetoDB.Nome = projeto.Nome;
@@ -43,6 +46,7 @@ namespace Argon.Repositorio
             projetoDB.Localidade = projeto.Localidade;
             projetoDB.Situacao = projeto.Situacao;
             projetoDB.Tipo = projeto.Tipo;
+            projetoDB.nomeAlteracao = usuario.Nome;
             projetoDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Projetos.Update(projetoDB);

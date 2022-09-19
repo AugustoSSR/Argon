@@ -28,6 +28,8 @@ namespace Argon
             services.AddScoped<IProjetosRepositorio, ProjetosRepositorio>();
             services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
             services.AddScoped<IEmpresasRepositorio, EmpresasRepositorio>();
+            services.AddScoped<IArquivoRepositorio, ArquivoRepositorio>();
+            services.AddScoped<IEngenheirosRepositorio, EngenheirosRepositorio>();
             services.AddScoped<ISessao, Sessao>();
             services.AddScoped<IEmail, Email>();
 
@@ -36,6 +38,7 @@ namespace Argon
                 o.Cookie.HttpOnly = true;
                 o.Cookie.IsEssential = true;
             });
+
 
         }
 

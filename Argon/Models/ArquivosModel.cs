@@ -2,7 +2,7 @@
 
 namespace Argon.Models
 {
-    public class ArquivoModel
+    public class ArquivosModel
     {
         public int Id { get; set; }
         public string Nome { get; set; }

@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-6">
             <labal class="form-label">CEP</labal>
-            <input type="text" name="cep" data-mask="00.000-000" asp-for="Cep" class="form-control" maxlength="10">
+            <input type="text" data-mask="00.000-000" asp-for="Cep" class="form-control" maxlength="10">
             @Html.ValidationMessageFor(x => x.Cep)
         </div>
         <div class="col-md-6">

@@ -5,10 +5,10 @@ namespace Argon.Repositorio
 {
     public interface IArquivoRepositorio
     {
-        List<ArquivoModel> GetArquivo();
-        ArquivoModel ListarPorID(int id);
-        ArquivoModel Adicionar(ArquivoModel arquivo);
-        ArquivoModel Atualizar(ArquivoModel arquivo);
+        List<ArquivosModel> GetArquivos();
+        ArquivosModel ListarPorID(int id);
+        ArquivosModel Adicionar(ArquivosModel arquivo);
+        ArquivosModel Atualizar(ArquivosModel arquivo);
 
         bool Apagar(int id);
 

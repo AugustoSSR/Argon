@@ -81,8 +81,6 @@ namespace Argon.Controllers
         [HttpPost]
         public IActionResult Adicionar(ProjetoModel projeto)
         {
-            
-
             try
             {
                 if (ModelState.IsValid)

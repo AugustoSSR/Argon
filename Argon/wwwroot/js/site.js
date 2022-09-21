@@ -5,6 +5,9 @@
 $(document).ready(function () {
     getDatatable('#projetosTable');
     getDatatable('#usuariosTable');
+    getDatatable('#arquivosTable');
+    getDatatable('#empresasTable');
+    getDatatable('#engenheirosTable');
 });
 
 function getDatatable(id) {

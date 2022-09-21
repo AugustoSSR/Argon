@@ -15,9 +15,8 @@ namespace Argon.Controllers
         }
         public IActionResult Index()
         {
-            List<ArquivoModel> projetos = _arquivoRepositorio.GetArquivo();
-
-            return View(projetos);
+            List<ArquivosModel> arquivos = _arquivoRepositorio.GetArquivos();
+            return View(arquivos);
         }
 
         public IActionResult Adicionar()
@@ -26,13 +25,13 @@ namespace Argon.Controllers
         }
         public IActionResult Editar(int id)
         {
-            ArquivoModel projeto = _arquivoRepositorio.ListarPorID(id);
-            return View(projeto);
+            ArquivosModel arquivos = _arquivoRepositorio.ListarPorID(id);
+            return View(arquivos);
         }
         public IActionResult ApagarConfirmacao(int id)
         {
-            ArquivoModel projeto = _arquivoRepositorio.ListarPorID(id);
-            return View(projeto);
+            ArquivosModel arquivos = _arquivoRepositorio.ListarPorID(id);
+            return View(arquivos);
         }
 
         public IActionResult Apagar(int id)
@@ -64,17 +63,17 @@ namespace Argon.Controllers
         }
 
         [HttpPost]
-        public IActionResult Adicionar(ArquivoModel projeto)
+        public IActionResult Adicionar(ArquivosModel arquivos)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _arquivoRepositorio.Adicionar(projeto);
+                    _arquivoRepositorio.Adicionar(arquivos);
                     TempData["MensagemSucesso"] = " Projeto cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }
-                return View(projeto);
+                return View(arquivos);
             }
             catch (System.Exception erro)
             {
@@ -84,18 +83,18 @@ namespace Argon.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(ArquivoModel projeto)
+        public IActionResult Editar(ArquivosModel arquivos)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _arquivoRepositorio.Atualizar(projeto);
+                    _arquivoRepositorio.Atualizar(arquivos);
                     TempData["MensagemSucesso"] = " Projeto alterado com sucesso";
                     return RedirectToAction("Index");
 
                 }
-                return View(projeto);
+                return View(arquivos);
             }
             catch (Exception erro)
             {

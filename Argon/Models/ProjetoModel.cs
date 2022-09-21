@@ -5,13 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Argon.Models
 {
-    [Keyless]
     public class ProjetoModel
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Selecione a empresa do projeto.")]
         public string? Empresa { get; set; }
-        public SelectList EmpresaList { get; set; }
         [Required(ErrorMessage = "Selecione o tipo do projeto.")]
         public TiposEnum Tipo { get; set; }
         [Required(ErrorMessage = "Selecione o nome do projeto.")]

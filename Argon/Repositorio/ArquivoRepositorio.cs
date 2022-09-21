@@ -10,19 +10,22 @@ namespace Argon.Repositorio
         {
             _bancoContext = bancoContext;
         }
-        public ArquivoModel ListarPorID(int id)
+        public ArquivosModel ListarPorID(int id)
         {
             return _bancoContext.Arquivos.FirstOrDefault(x => x.Id == id);
         }
-        public List<ArquivoModel> GetArquivo()
+        public List<ArquivosModel> GetArquivos()
         {
             // listagem de Arquivoss
             return _bancoContext.Arquivos.ToList();
         }
-        public ArquivoModel Adicionar(ArquivoModel Arquivos)
+        public ArquivosModel Adicionar(ArquivosModel Arquivos)
         {
-            UsuariosModel usuario = new UsuariosModel();
             // Inserção do banco de dados.
+
+            var usuario = new UsuariosModel();
+
+
             Arquivos.dataCadastro = DateTime.Now;
             Arquivos.nomeCadastro = usuario.Nome;
             _bancoContext.Arquivos.Add(Arquivos);
@@ -30,16 +33,14 @@ namespace Argon.Repositorio
             return Arquivos;
         }
 
-        public ArquivoModel Atualizar(ArquivoModel Arquivos)
+        public ArquivosModel Atualizar(ArquivosModel Arquivos)
         {
-            ArquivoModel ArquivosDB = ListarPorID(Arquivos.Id);
-            UsuariosModel usuario = new UsuariosModel();
+            ArquivosModel ArquivosDB = ListarPorID(Arquivos.Id);
             if (ArquivosDB == null) throw new System.Exception("Houve um erro na atualização do Arquivos.");
             ArquivosDB.Nome = Arquivos.Nome;
             ArquivosDB.numeroCaderno = Arquivos.numeroCaderno;
             ArquivosDB.Empresa = Arquivos.Empresa;
             ArquivosDB.Localidade = Arquivos.Localidade;
-            ArquivosDB.nomeAlteracao = usuario.Nome;
             ArquivosDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Arquivos.Update(ArquivosDB);
@@ -50,7 +51,7 @@ namespace Argon.Repositorio
 
         public bool Apagar(int id)
         {
-            ArquivoModel ArquivosDB = ListarPorID(id);
+            ArquivosModel ArquivosDB = ListarPorID(id);
 
             if (ArquivosDB == null) throw new System.Exception("Houve um erro na deleção do Arquivos.");
 

@@ -11,6 +11,7 @@ namespace Argon.Controllers
     public class ProjetosController : Controller
     {
         private readonly IProjetosRepositorio _projetosRepositorio;
+        private readonly ProjetoModel _service = new ProjetoModel();
         private readonly DBContext _dbContext;
         public ProjetosController(IProjetosRepositorio projetosRepositorio
             , DBContext dBContext)
@@ -26,17 +27,6 @@ namespace Argon.Controllers
 
         public IActionResult Adicionar()
         {
-            List<EmpresasModel> empresasList = new List<EmpresasModel>();
-            empresasList = (from x in _dbContext.Empresas select x).ToList();
-            empresasList.Insert(0, new EmpresasModel { Id = 0, Nome = "Selecione a empresa" });
-            ViewBag.empresa = empresasList;
-
-            List<EngenheirosModel> engenheiroList = new List<EngenheirosModel>();
-            engenheiroList = (from x in _dbContext.Engenheiros select x).ToList();
-            engenheiroList.Insert(0, new EngenheirosModel { Id = 0, Nome = "Selecione o engenheiro" });
-            ViewBag.engenheiro = engenheiroList;
-
-
             return View();
         }
         public IActionResult Editar(int id)

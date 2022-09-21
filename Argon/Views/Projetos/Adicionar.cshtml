@@ -57,8 +57,7 @@
         </div>
         <div class="col-md-4">
             <labal class="form-label">Empresa</labal>
-            <select class="form-select" id="selectitemss" asp-for="Empresa" asp-items="@(new SelectList(@ViewBag.empresa, "Id", "Nome"))"></select>
-
+            <select class="form-select" asp-for="Empresa" asp-items="@Model.EmpresaList"><option>Selecione a empresa</option></select>
             @Html.ValidationMessageFor(x => x.Empresa)
         </div>
         <div class="col-md-4">
@@ -83,7 +82,7 @@
         </div>
         <div class="col-md-4">
             <labal class="form-label">Engenheiro</labal>
-            <select class="form-select" id="selectitems" asp-for="Engenheiros" asp-items="@(new SelectList(@ViewBag.engenheiro, "Id", "Nome"))"></select>
+            <select class="form-select" asp-for="Engenheiros" asp-items="@Model.EngenheirosList"><option>Selecione o engenheiro</option></select>
             @Html.ValidationMessageFor(x => x.Engenheiros)
         </div>
         <div class="col-md-12">

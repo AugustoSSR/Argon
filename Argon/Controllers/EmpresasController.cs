@@ -105,5 +105,10 @@ namespace Argon.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        public static implicit operator EmpresasController(EmpresasRepositorio v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

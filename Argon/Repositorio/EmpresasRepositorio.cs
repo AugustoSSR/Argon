@@ -10,6 +10,7 @@ namespace Argon.Repositorio
         {
             _bancoContext = bancoContext;
         }
+
         public EmpresasModel ListarPorID(int id)
         {
             return _bancoContext.Empresas.FirstOrDefault(x => x.Id == id);

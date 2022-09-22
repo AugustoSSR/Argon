@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Argon.Data
 {
-    public class DBContext : DbContext
+    public class DataContext : DbContext
     {
-        public DBContext(DbContextOptions<DBContext> options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
         public DbSet<ProjetoModel> Projetos { get; set; }

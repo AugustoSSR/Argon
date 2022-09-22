@@ -1,13 +1,8 @@
 ﻿@model List<ProjetoModel>
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 @{
     ViewData["Title"] = "Lista de Projetos";
 }
-
-
-
 
 <div class="text-center">
 
@@ -50,12 +45,8 @@
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-caret-right-square-fill"></i> &nbsp;Ações</button>
-                                    <ul class="dropdown-menu">
-                                        <li><a role="button" class="dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="Editar"><i class="bi bi-gear"></i> &nbsp;Editar</a></li>
-                                        <li><a role="button" class=" dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> &nbsp;Copiar</a></li>
-                                        <li><a role="button" class=" dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="ApagarConfirmacao"><i class="bi bi-trash3"></i> &nbsp;Apagar</a></li>
-                                    </ul>
+                                    <a role="button" class="dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="Editar"><i class="bi bi-gear"></i> &nbsp;Editar</a>
+                                    <a role="button" class=" dropdown-item" asp-route-id="@projeto.Id" asp-controller="Projetos" asp-action="ApagarConfirmacao"><i class="bi bi-trash3"></i> &nbsp;Apagar</a>
                                 </div>
                             </div>
                         </td>

@@ -1,12 +1,13 @@
 ﻿using Argon.Data;
 using Argon.Models;
+using Argon.Repositorio.Ínterface;
 
 namespace Argon.Repositorio
 {
     public class UsuariosRepositorio : IUsuariosRepositorio
     {
-        private readonly DBContext _bancoContext;
-        public UsuariosRepositorio(DBContext bancoContext)
+        private readonly DataContext _bancoContext;
+        public UsuariosRepositorio(DataContext bancoContext)
         {
             _bancoContext = bancoContext;
         }
@@ -31,7 +32,6 @@ namespace Argon.Repositorio
         {
             // Inserção do banco de dados.
             usuario.dataCadastro = DateTime.Now;
-            usuario.nomeCadastro = usuario.Nome;
             usuario.SetSenhaHash();
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges();
@@ -48,7 +48,6 @@ namespace Argon.Repositorio
             usuarioDB.Email = usuario.Email;
             usuarioDB.Telefone = usuario.Telefone;
             usuarioDB.Perfil = usuario.Perfil;
-            usuarioDB.nomeAlteracao = usuario.Nome;
             usuarioDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Usuarios.Update(usuarioDB);

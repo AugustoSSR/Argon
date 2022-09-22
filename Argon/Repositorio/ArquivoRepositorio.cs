@@ -1,12 +1,13 @@
 ﻿using Argon.Data;
 using Argon.Models;
+using Argon.Repositorio.Ínterface;
 
 namespace Argon.Repositorio
 {
     public class ArquivoRepositorio : IArquivoRepositorio
     {
-        private readonly DBContext _bancoContext;
-        public ArquivoRepositorio(DBContext bancoContext)
+        private readonly DataContext _bancoContext;
+        public ArquivoRepositorio(DataContext bancoContext)
         {
             _bancoContext = bancoContext;
         }
@@ -22,12 +23,7 @@ namespace Argon.Repositorio
         public ArquivosModel Adicionar(ArquivosModel Arquivos)
         {
             // Inserção do banco de dados.
-
-            var usuario = new UsuariosModel();
-
-
             Arquivos.dataCadastro = DateTime.Now;
-            Arquivos.nomeCadastro = usuario.Nome;
             _bancoContext.Arquivos.Add(Arquivos);
             _bancoContext.SaveChanges();
             return Arquivos;

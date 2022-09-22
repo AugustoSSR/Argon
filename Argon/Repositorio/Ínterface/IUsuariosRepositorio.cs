@@ -1,7 +1,7 @@
 ﻿using Argon.Models;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Argon.Repositorio
+namespace Argon.Repositorio.Ínterface
 {
     public interface IUsuariosRepositorio
     {

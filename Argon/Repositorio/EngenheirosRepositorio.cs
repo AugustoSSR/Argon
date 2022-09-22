@@ -1,12 +1,13 @@
 ﻿using Argon.Data;
 using Argon.Models;
+using Argon.Repositorio.Ínterface;
 
 namespace Argon.Repositorio
 {
     public class EngenheirosRepositorio : IEngenheirosRepositorio
     {
-        private readonly DBContext _bancoContext;
-        public EngenheirosRepositorio(DBContext bancoContext)
+        private readonly DataContext _bancoContext;
+        public EngenheirosRepositorio(DataContext bancoContext)
         {
             _bancoContext = bancoContext;
         }
@@ -21,10 +22,8 @@ namespace Argon.Repositorio
         }
         public EngenheirosModel Adicionar(EngenheirosModel Engenheiros)
         {
-            UsuariosModel usuario = new UsuariosModel();
             // Inserção do banco de dados.
             Engenheiros.dataCadastro = DateTime.Now;
-            Engenheiros.nomeCadastro = usuario.Nome;
             _bancoContext.Engenheiros.Add(Engenheiros);
             _bancoContext.SaveChanges();
             return Engenheiros;
@@ -33,14 +32,11 @@ namespace Argon.Repositorio
         public EngenheirosModel Atualizar(EngenheirosModel Engenheiros)
         {
             EngenheirosModel EngenheirosDB = ListarPorID(Engenheiros.Id);
-            UsuariosModel Usuario = new UsuariosModel();
             if (EngenheirosDB == null) throw new System.Exception("Houve um erro na atualização do Engenheiros.");
             EngenheirosDB.Nome = Engenheiros.Nome;
             EngenheirosDB.CPF = Engenheiros.CPF;
             EngenheirosDB.CREA = Engenheiros.CREA;
             EngenheirosDB.Email = Engenheiros.Email;
-            EngenheirosDB.dataVencimento = Engenheiros.dataVencimento;
-            EngenheirosDB.nomeAlteracao = Usuario.Nome;
             EngenheirosDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Engenheiros.Update(EngenheirosDB);

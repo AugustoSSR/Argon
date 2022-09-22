@@ -26,13 +26,12 @@ namespace Argon.Models
         [Required(ErrorMessage = "Digite sua senha por favor.")]
         //[StringLength(16, MinimumLength = 8, ErrorMessage = "A senha do usuario deve conter entre 8 e 16 caracteres.")]
         public string Senha { get; set; }
-        public string? nomeCadastro { get; set; }
 
         [Required(ErrorMessage = "Informe o cargo do usuario")]
         public PerfilEnum? Perfil { get; set; }
+        [Required]
         public DateTime dataCadastro { get; set; }
         public DateTime? dataAlteracao { get; set; }
-        public string? nomeAlteracao { get; set; }
 
         public bool SenhaValida(string senha)
         {

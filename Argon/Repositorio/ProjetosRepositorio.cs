@@ -1,12 +1,13 @@
 ﻿using Argon.Data;
 using Argon.Models;
+using Argon.Repositorio.Ínterface;
 
 namespace Argon.Repositorio
 {
     public class ProjetosRepositorio : IProjetosRepositorio
     {
-        private readonly DBContext _bancoContext;
-        public ProjetosRepositorio(DBContext bancoContext)
+        private readonly DataContext _bancoContext;
+        public ProjetosRepositorio(DataContext bancoContext)
         {
             _bancoContext = bancoContext;
         }
@@ -21,10 +22,8 @@ namespace Argon.Repositorio
         }
         public ProjetoModel Adicionar(ProjetoModel projeto)
         {
-            UsuariosModel usuario = new UsuariosModel();
             // Inserção do banco de dados.
             projeto.dataCadastro = DateTime.Now;
-            projeto.nomeCadastro = usuario.Nome;
             _bancoContext.Projetos.Add(projeto);
             _bancoContext.SaveChanges();
             return projeto;
@@ -33,8 +32,6 @@ namespace Argon.Repositorio
         public ProjetoModel Atualizar(ProjetoModel projeto)
         {
             ProjetoModel projetoDB = ListarPorID(projeto.Id);
-            UsuariosModel usuario = new UsuariosModel();
-
             if (projetoDB == null) throw new System.Exception("Houve um erro na atualização do projeto.");
             projetoDB.Nome = projeto.Nome;
             projetoDB.Concessionaria = projeto.Concessionaria;
@@ -46,7 +43,6 @@ namespace Argon.Repositorio
             projetoDB.Localidade = projeto.Localidade;
             projetoDB.Situacao = projeto.Situacao;
             projetoDB.Tipo = projeto.Tipo;
-            projetoDB.nomeAlteracao = usuario.Nome;
             projetoDB.dataAlteracao = DateTime.Now;
 
             _bancoContext.Projetos.Update(projetoDB);

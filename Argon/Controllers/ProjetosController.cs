@@ -1,7 +1,7 @@
 ﻿using Argon.Data;
 using Argon.Filters;
 using Argon.Models;
-using Argon.Repositorio;
+using Argon.Repositorio.Ínterface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -11,13 +11,9 @@ namespace Argon.Controllers
     public class ProjetosController : Controller
     {
         private readonly IProjetosRepositorio _projetosRepositorio;
-        private readonly ProjetoModel _service = new ProjetoModel();
-        private readonly DBContext _dbContext;
-        public ProjetosController(IProjetosRepositorio projetosRepositorio
-            , DBContext dBContext)
+        public ProjetosController(IProjetosRepositorio projetosRepositorio)
         {
             _projetosRepositorio = projetosRepositorio;
-            _dbContext = dBContext;
         }
         public IActionResult Index()
         {

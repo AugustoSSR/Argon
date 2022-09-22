@@ -40,3 +40,8 @@ function getDatatable(id) {
         }
     });
 }
+
+
+$(document).on('click', '.btn-adicionar', function () {
+    boot
+})    

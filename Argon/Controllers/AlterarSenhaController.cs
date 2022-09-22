@@ -1,7 +1,7 @@
 ﻿using Argon.Filters;
 using Argon.Helper;
 using Argon.Models;
-using Argon.Repositorio;
+using Argon.Repositorio.Ínterface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Argon.Controllers

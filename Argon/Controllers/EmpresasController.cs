@@ -2,6 +2,7 @@
 using Argon.Filters;
 using Argon.Models;
 using Argon.Repositorio;
+using Argon.Repositorio.Ínterface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
